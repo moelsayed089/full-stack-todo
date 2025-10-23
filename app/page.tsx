@@ -1,24 +1,43 @@
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { DialogClose } from "@radix-ui/react-dialog";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-export default function Home() {
+// import { Button } from "@/components/ui/button";
+// import { Plus } from "lucide-react";
+// import {
+//   Dialog,
+//   DialogContent,
+//   DialogDescription,
+//   DialogFooter,
+//   DialogHeader,
+//   DialogTitle,
+//   DialogTrigger,
+// } from "@/components/ui/dialog";
+// import { DialogClose } from "@radix-ui/react-dialog";
+// import { Label } from "@/components/ui/label";
+// import { Input } from "@/components/ui/input";
+import { getTodoListAction } from "@/actions/todo.actions";
+export default async function Home() {
+  const todos = await getTodoListAction();
+  console.log(todos);
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <Dialog>
+    <>
+      <h1 className="text-2xl font-bold">Welcome to the Todo App</h1>
+      <div className="grid gap-4">
+        {todos.map((todo) => (
+          <div key={todo.id} className="p-4 border rounded-md">
+            <h2 className="text-lg font-semibold">{todo.title}</h2>
+            <p>{todo.description}</p>
+            <p className="text-sm text-gray-500">
+              {todo.completed ? "Completed" : "Not completed"}
+            </p>
+          </div>
+        ))}
+      </div>
+      <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+        {/* Uncomment the dialog code below to enable the create todo dialog */}
+        {/* <Button>
+        <span className="sr-only">Create a new todo</span>
+      {/* <Dialog>
         <form>
-          <DialogTrigger asChild>
-            <Button>
+        <DialogTrigger asChild>
+        <Button>
               <span className="sr-only">Create a new todo</span>
               <Plus />
               New Todo
@@ -54,7 +73,8 @@ export default function Home() {
             </DialogFooter>
           </DialogContent>
         </form>
-      </Dialog>
-    </div>
+      </Dialog> */}
+      </div>
+    </>
   );
 }
