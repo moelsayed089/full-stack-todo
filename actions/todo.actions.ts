@@ -1,6 +1,7 @@
 "use server";
 import { TodoFormValue } from "@/schema/TodoFormSchema";
 import { PrismaClient } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
@@ -19,4 +20,11 @@ export const createTodoAction = async (data: TodoFormValue) => {
   return todo;
 };
 export const updateTodoAction = async () => {};
-export const deleteTodoAction = async () => {};
+
+export const deleteTodoAction = async (id: string) => {
+  await prisma.todo.delete({
+    where: {
+      id: id,
+    },
+  });
+};

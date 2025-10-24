@@ -1,9 +1,16 @@
+import { getTodoListAction } from "@/actions/todo.actions";
 import AddTodoForm from "@/components/AddTodoForm";
+import TodoTable from "@/components/TodoTable";
 
-function Home() {
+async function Home() {
+  const todo = await getTodoListAction();
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <AddTodoForm />
+    <div className="container mt-24 ">
+      <div className="mb-4">
+        <AddTodoForm />
+      </div>
+
+      <TodoTable todos={todo} />
     </div>
   );
 }
