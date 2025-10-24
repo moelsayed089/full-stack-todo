@@ -1,4 +1,3 @@
-"use client";
 import {
   Table,
   TableBody,
@@ -8,21 +7,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "./ui/button";
-import { Pen, Trash } from "lucide-react";
+
 import { ITodo } from "@/interface/todo";
 import { Badge } from "./ui/badge";
-import { deleteTodoAction } from "@/actions/todo.actions";
-import { useState } from "react";
-import Spinner from "./Loader";
+import TodoAction from "./TodoAction";
 
 function TodoTable({ todos }: { todos: ITodo[] }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const onDelete = async (id: string) => {
-    setIsLoading(true);
-    await deleteTodoAction(id);
-    setIsLoading(false);
-  };
   return (
     <Table>
       <TableHeader>
@@ -46,18 +36,7 @@ function TodoTable({ todos }: { todos: ITodo[] }) {
               )}
             </TableCell>
             <TableCell>
-              <div className="flex items-center space-x-3 justify-end ">
-                <Button size={"icon"}>
-                  <Pen size={16} />
-                </Button>
-                <Button
-                  size={"icon"}
-                  variant={"destructive"}
-                  onClick={() => onDelete(todoItem.id)}
-                >
-                  {isLoading ? <Spinner /> : <Trash size={16} />}
-                </Button>
-              </div>
+              <TodoAction id={todoItem.id} />
             </TableCell>
           </TableRow>
         ))}
