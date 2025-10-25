@@ -17,6 +17,7 @@ export const createTodoAction = async (data: TodoFormValue) => {
       completed: data.completed,
     },
   });
+  revalidatePath("/");
   return todo;
 };
 export const updateTodoAction = async () => {};
@@ -27,4 +28,5 @@ export const deleteTodoAction = async (id: string) => {
       id: id,
     },
   });
+  revalidatePath("/");
 };
