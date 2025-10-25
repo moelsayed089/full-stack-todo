@@ -27,8 +27,12 @@ import { TodoFormSchema, TodoFormValue } from "@/schema/TodoFormSchema";
 import { createTodoAction } from "@/actions/todo.actions";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "./ui/label";
+import { useState } from "react";
+import Spinner from "./Loader";
 
 const AddTodoForm = () => {
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const form = useForm<TodoFormValue>({
     resolver: zodResolver(TodoFormSchema),
     defaultValues: {
@@ -39,11 +43,15 @@ const AddTodoForm = () => {
   });
 
   const onSubmit = async (data: TodoFormValue) => {
+    setLoading(true);
     await createTodoAction(data);
+    setLoading(false);
+    setOpen(false);
+    form.reset();
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>
           <Plus />
@@ -116,7 +124,16 @@ const AddTodoForm = () => {
                   Cancel
                 </Button>
               </DialogClose>
-              <Button type="submit">Save</Button>
+              <Button type="submit">
+                {loading ? (
+                  <>
+                    <Spinner />
+                    Creating..
+                  </>
+                ) : (
+                  "Create Todo"
+                )}
+              </Button>
             </DialogFooter>
           </form>
         </Form>
