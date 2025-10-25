@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { ModeToggle } from "@/components/ModeToggle";
 import { Montserrat } from "next/font/google";
-
+import { ClerkProvider } from "@clerk/nextjs";
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -20,26 +20,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      style={{ colorScheme: "light dark" }}
-      suppressHydrationWarning
-    >
-      <body
-        className={`${montserrat.variable} ${montserrat.variable} antialiased`}
+    <ClerkProvider>
+      <html
+        lang="en"
         style={{ colorScheme: "light dark" }}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+        <body
+          className={`${montserrat.variable} ${montserrat.variable} antialiased`}
+          style={{ colorScheme: "light dark" }}
+          suppressHydrationWarning
         >
-          <ModeToggle />
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ModeToggle />
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
