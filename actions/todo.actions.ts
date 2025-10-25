@@ -20,7 +20,19 @@ export const createTodoAction = async (data: TodoFormValue) => {
   revalidatePath("/");
   return todo;
 };
-export const updateTodoAction = async () => {};
+export const updateTodoAction = async (id: string, data: TodoFormValue) => {
+  await prisma.todo.update({
+    where: {
+      id: id,
+    },
+    data: {
+      title: data.title,
+      description: data.description,
+      completed: data.completed,
+    },
+  });
+  revalidatePath("/");
+};
 
 export const deleteTodoAction = async (id: string) => {
   await prisma.todo.delete({

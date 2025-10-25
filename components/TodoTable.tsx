@@ -36,7 +36,7 @@ function TodoTable({ todos }: { todos: ITodo[] }) {
               )}
             </TableCell>
             <TableCell>
-              <TodoAction id={todoItem.id} />
+              <TodoAction todos={todoItem} />
             </TableCell>
           </TableRow>
         ))}

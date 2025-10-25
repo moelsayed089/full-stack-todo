@@ -1,11 +1,13 @@
 "use client";
-import { Pen, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import { Button } from "./ui/button";
 import Spinner from "./Loader";
 import { deleteTodoAction } from "@/actions/todo.actions";
 import { useState } from "react";
+import EditTodoForm from "./EditTodoForm";
+import { ITodo } from "@/interface/todo";
 
-const TodoAction = ({ id }: { id: string }) => {
+const TodoAction = ({ todos }: { todos: ITodo }) => {
   const [isLoading, setIsLoading] = useState(false);
   const onDelete = async (id: string) => {
     setIsLoading(true);
@@ -14,13 +16,11 @@ const TodoAction = ({ id }: { id: string }) => {
   };
   return (
     <div className="flex items-center space-x-3 justify-end ">
-      <Button size={"icon"}>
-        <Pen size={16} />
-      </Button>
+      <EditTodoForm todos={todos} />
       <Button
         size={"icon"}
         variant={"destructive"}
-        onClick={() => onDelete(id)}
+        onClick={() => onDelete(todos.id)}
       >
         {isLoading ? <Spinner /> : <Trash size={16} />}
       </Button>
