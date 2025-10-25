@@ -3,5 +3,6 @@ export interface ITodo {
   description: string | null;
   completed: boolean;
   id: string;
+  user_id: string | null;
   createdAt: Date;
 }

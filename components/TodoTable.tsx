@@ -24,7 +24,7 @@ function TodoTable({ todos }: { todos: ITodo[] }) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {todos.map((todoItem) => (
+        {todos?.map((todoItem) => (
           <TableRow key={todoItem.id}>
             <TableCell className="font-medium">{todoItem.id}</TableCell>
             <TableCell>{todoItem.title}</TableCell>
@@ -44,7 +44,9 @@ function TodoTable({ todos }: { todos: ITodo[] }) {
       <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
+          <TableCell className="text-right">
+            {!todos?.length ? 0 : todos?.length}
+          </TableCell>
         </TableRow>
       </TableFooter>
     </Table>

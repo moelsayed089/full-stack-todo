@@ -31,7 +31,7 @@ import { Label } from "./ui/label";
 import { useState } from "react";
 import Spinner from "./Loader";
 
-const AddTodoForm = () => {
+const AddTodoForm = ({ userId }: { userId: string | null }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const form = useForm<TodoFormValue>({
@@ -45,7 +45,7 @@ const AddTodoForm = () => {
 
   const onSubmit = async (data: TodoFormValue) => {
     setLoading(true);
-    await createTodoAction(data);
+    await createTodoAction(data, userId);
     setLoading(false);
     setOpen(false);
     form.reset();
