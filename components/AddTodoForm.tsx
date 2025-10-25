@@ -16,6 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -68,7 +69,7 @@ const AddTodoForm = () => {
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 ">
             <FormField
               control={form.control}
               name="title"
@@ -105,15 +106,24 @@ const AddTodoForm = () => {
               control={form.control}
               name="completed"
               render={({ field }) => (
-                <FormItem className="flex items-center space-x-2">
+                <FormItem>
                   <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
+                    <div className="flex items-center  space-x-2 mb-3">
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        className="hover:cursor-pointer"
+                      />
+                      <Label>Completed</Label>
+                    </div>
                   </FormControl>
-                  <Label>Completed</Label>
+
                   <FormMessage />
+
+                  <FormDescription>
+                    Your to-do will be marked as UnCompleted by default unless
+                    you check this
+                  </FormDescription>
                 </FormItem>
               )}
             />
