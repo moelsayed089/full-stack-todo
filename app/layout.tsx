@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { ModeToggle } from "@/components/ModeToggle";
 import { Montserrat } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import Nav from "@/components/Nav";
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -37,7 +38,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <ModeToggle />
+            <Nav />
             {children}
           </ThemeProvider>
         </body>
