@@ -4,6 +4,7 @@ import { Montserrat } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import Nav from "@/components/Nav";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -67,6 +68,7 @@ export default function RootLayout({
           >
             <Nav />
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

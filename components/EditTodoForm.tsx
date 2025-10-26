@@ -31,6 +31,7 @@ import { useState } from "react";
 import Spinner from "./Loader";
 import { ITodo } from "@/interface/todo";
 import { updateTodoAction } from "@/actions/todo.actions";
+import { toast } from "sonner";
 
 const EditTodoForm = ({ todos }: { todos: ITodo }) => {
   const [open, setOpen] = useState(false);
@@ -46,7 +47,18 @@ const EditTodoForm = ({ todos }: { todos: ITodo }) => {
 
   const onSubmit = async (data: TodoFormValue) => {
     setLoading(true);
-    await updateTodoAction(todos.id, data);
+    try {
+      await updateTodoAction(todos.id, data);
+      toast("✅ Todo updated successfully", {
+        duration: 4000,
+      });
+    } catch (error) {
+      console.log("Failed to update todo:", error);
+      toast("❌ Failed to update todo", {
+        duration: 4000,
+      });
+    }
+
     setLoading(false);
     setOpen(false);
   };
