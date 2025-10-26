@@ -1,6 +1,6 @@
 import { getUserTodoListAction } from "@/actions/todo.actions";
 import AddTodoForm from "@/components/AddTodoForm";
-import TodoTable from "@/components/TodoTable";
+// import TodoTable from "@/components/TodoTable";
 import { auth } from "@clerk/nextjs/server";
 async function Home() {
   const { userId } = await auth();
@@ -10,7 +10,7 @@ async function Home() {
       <div className="mb-4">
         <AddTodoForm userId={userId} />
       </div>
-      <TodoTable todos={todo} />
+      {/* <TodoTable todos={todo} /> */}
     </div>
   );
 }
