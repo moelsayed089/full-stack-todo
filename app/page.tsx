@@ -7,11 +7,9 @@ async function Home() {
   const todo = await getUserTodoListAction(userId);
   return (
     <div className="container mt-24 ">
-      <h1>Hello, {userId}</h1>
       <div className="mb-4">
         <AddTodoForm userId={userId} />
       </div>
-
       <TodoTable todos={todo} />
     </div>
   );

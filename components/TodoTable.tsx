@@ -20,6 +20,7 @@ function TodoTable({ todos }: { todos: ITodo[] }) {
           <TableHead>ID</TableHead>
           <TableHead>Title</TableHead>
           <TableHead>Completed</TableHead>
+          <TableHead className="text-right">Created At</TableHead>
           <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
@@ -35,6 +36,9 @@ function TodoTable({ todos }: { todos: ITodo[] }) {
                 <Badge variant="destructive">UnCompleted</Badge>
               )}
             </TableCell>
+            <TableCell className="text-right">
+              {todoItem.createdAt.toLocaleDateString()}
+            </TableCell>
             <TableCell>
               <TodoAction todos={todoItem} />
             </TableCell>
@@ -43,7 +47,7 @@ function TodoTable({ todos }: { todos: ITodo[] }) {
       </TableBody>
       <TableFooter>
         <TableRow>
-          <TableCell colSpan={3}>Total</TableCell>
+          <TableCell colSpan={4}>Total</TableCell>
           <TableCell className="text-right">
             {!todos?.length ? 0 : todos?.length}
           </TableCell>
