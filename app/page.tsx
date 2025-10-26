@@ -1,15 +1,16 @@
-import { getUserTodoListAction } from "@/actions/todo.actions";
-import AddTodoForm from "@/components/AddTodoForm";
+// import { getUserTodoListAction } from "@/actions/todo.actions";
+// import AddTodoForm from "@/components/AddTodoForm";
 // import TodoTable from "@/components/TodoTable";
-import { auth } from "@clerk/nextjs/server";
+// import { auth } from "@clerk/nextjs/server";
 async function Home() {
-  const { userId } = await auth();
-  const todo = await getUserTodoListAction(userId);
+  // const { userId } = await auth();
+  // const todo = await getUserTodoListAction(userId);
   return (
     <div className="container mt-24 ">
-      <div className="mb-4">
+      <h1 className="text-3xl font-bold text-center">Wellcome to Todo App</h1>
+      {/* <div className="mb-4">
         <AddTodoForm userId={userId} />
-      </div>
+      </div> */}
       {/* <TodoTable todos={todo} /> */}
     </div>
   );
