@@ -3,15 +3,14 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  const allTodos = await prisma.todo.create({
-    data: {
-      title: "Sample Todo",
-      description: "This is a sample todo item.",
-      completed: false,
-    },
-  });
-
-  console.log(allTodos);
+  // const allTodos = await prisma.todo.create({
+  //   data: {
+  //     title: "Sample Todo",
+  //     description: "This is a sample todo item.",
+  //     completed: false,
+  //     user_id: "sample-user-id",
+  //   },
+  // });
 }
 
 main()
