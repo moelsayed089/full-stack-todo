@@ -14,7 +14,7 @@ async function Home() {
   const todos = await getUserTodoListAction(userId);
 
   return (
-    <div className="container mt-24">
+    <div className="container mt-10">
       <h1 className="text-2xl font-medium text-center mb-5">
         Welcome to Todo App 🚀
       </h1>
