@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "Todo App",
     images: [
       {
-        url: "https://fullstack-nextjs-todo-dev-mohamed.vercel.app/coverTodo.png",
+        url: "https://fullstack-nextjs-todo-dev-mohamed.vercel.app/COVERTODO.png",
         width: 1200,
         height: 630,
         alt: "Preview of Todo App",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description:
       "A clean and intuitive Todo App that helps you stay productive every day.",
     images: [
-      "https://fullstack-nextjs-todo-dev-mohamed.vercel.app/coverTodo.png",
+      "https://fullstack-nextjs-todo-dev-mohamed.vercel.app/COVERTODO.png",
     ],
   },
   alternates: {
