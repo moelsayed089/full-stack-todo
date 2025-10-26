@@ -25,19 +25,19 @@ function TodoTable({ todos }: { todos: ITodo[] }) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {todos?.map((todoItem) => (
-          <TableRow key={todoItem.id}>
-            <TableCell className="font-medium">{todoItem.id}</TableCell>
-            <TableCell>{todoItem.title}</TableCell>
+        {todos.map((todoItem) => (
+          <TableRow key={todoItem?.id}>
+            <TableCell className="font-medium">{todoItem?.id}</TableCell>
+            <TableCell>{todoItem?.title}</TableCell>
             <TableCell>
-              {todoItem.completed ? (
+              {todoItem?.completed ? (
                 <Badge variant="default">Completed</Badge>
               ) : (
                 <Badge variant="destructive">UnCompleted</Badge>
               )}
             </TableCell>
             <TableCell className="text-right">
-              {todoItem.createdAt.toLocaleDateString()}
+              {todoItem?.createdAt.toLocaleDateString()}
             </TableCell>
             <TableCell>
               <TodoAction todos={todoItem} />
