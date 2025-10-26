@@ -26,13 +26,13 @@ const DeleteTodoDialog = ({ id }: { id: string }) => {
     try {
       await deleteTodoAction(id);
 
-      toast.success("Todo deleted successfully!");
+      toast("✅ Todo deleted successfully!");
 
       setOpen(false);
     } catch (error) {
       console.error("Error deleting todo:", error);
 
-      toast.error("Failed to delete todo. Please try again.");
+      toast("❌ Failed to delete todo. Please try again.");
     } finally {
       setLoading(false);
     }
