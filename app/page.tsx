@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "Todo App | Manage Your Tasks Easily",
     description:
       "Organize your daily tasks with this simple Todo App. Built using Next.js and Clerk authentication.",
-    url: "https://fullstack-nextjs-todo-dev-mohamed.vercel.app/coverTodo.png",
+    url: "https://fullstack-nextjs-todo-dev-mohamed.vercel.app",
     siteName: "Todo App",
     images: [
       {
@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     canonical: "https://fullstack-nextjs-todo-dev-mohamed.vercel.app",
   },
 };
+
 async function Home() {
   const { userId } = await auth();
 
