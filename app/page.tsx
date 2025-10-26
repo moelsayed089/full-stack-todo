@@ -15,8 +15,8 @@ async function Home() {
 
   return (
     <div className="container mt-24">
-      <h1 className="text-3xl font-bold text-center">
-        Welcome to Todo App 🚀 {userId}
+      <h1 className="text-2xl font-medium text-center mb-5">
+        Welcome to Todo App 🚀
       </h1>
       <div className="mb-4">
         <AddTodoForm userId={userId} />
